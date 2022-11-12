@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> {{ project.title }} </h1>
+    {% for tag in project.tags.all %}
+        <b style="color: greenyellow"> {{ tag }} </b>
+    {% endfor %}
+
+    <hr>
+    {% if project.description %}
+    <p> {{ project.description }} </p>
+    {% else %}
+    <p> This project has no description</p>
+    {% endif %}
+    <hr>
+    <h2>Reviews</h2>
+    {% if project.review_set.all %}
+        {% for review in project.review_set.all %}
+{#            <h3> {{ review.project.title }}</h3>#}
+            <p> {{ review.body }} : <b>{{ review }}</b></p>
+            <hr>
+        {% endfor %}
+     {% else %}
+        <p>No reviews on this project</p>
+    {% endif %}
+
+
+{% endblock %}
+
+

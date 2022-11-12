@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Projects From db</h1>
+    <ul>
+        {% for x in data %}
+{#            <li><a href="/project/{{ x.id }}"> {{ x.title }} </a></li>#}
+            <li><a href="{% url 'project' x.id  %}"> {{ x.title }} </a>
+                <a class="alter-font" href="{% url 'alter-project' x.id %}"> <i class="fa-solid fa-pen-to-square">&nbsp;</i> </a>
+                <a class="alter-font" href="{% url 'delete-project' x.id %}"> <i class="fa-solid fa-trash"></i> </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
